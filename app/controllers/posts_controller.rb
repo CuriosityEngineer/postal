@@ -17,4 +17,11 @@ class PostsController < ApplicationController
      end
   end
 
+  # A page for de individual User's posts
+  def user
+      @user = User.find( params[:user_id] )
+
+      @posts = Post.where( user: @user ).order( created_at: :desc )
+   end
+
 end
