@@ -22,3 +22,9 @@ Post.create( content: "My hamster resents me." )
 Post.create( content: "Free market solves all problems."         )
 Post.create( content: "Workers control the means of production." )
 Post.create( content: "Can't we all just get along?"             )
+
+User.delete_all
+
+frank = User.create( email: 'frank@ex.com', password: 'abcd1234' )
+alice = User.create( email: 'alice@ex.com', password: 'abcd1234' )
+anton = User.create( email: 'anton@ex.com', password: 'abcd1234' )
