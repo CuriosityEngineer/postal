@@ -1,6 +1,15 @@
 <div class="col-xs-8">
-   <h4><%= post.content %><h4>
-      <em>
-        <%= link_to post.user.handle, user_posts_path( post.user ) %>
-      </em>
+   <p>
+      <h4><%= post.content %></h4>
+
+      <% liked = Like.find_by( post: post, user: current_user ) != nil %>
+      <% btn_color = liked ? "warning" : "default" %>
+
+      <%= link_to "ツ", post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs", disabled: !user_signed_in? %>
+      <%= post.likes.count %>
+
+      &nbsp
+
+      <em><%= link_to post.user.handle, user_posts_path( post.user ) %></em>
+   </p>
 </div>
