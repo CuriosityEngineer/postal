@@ -4,8 +4,9 @@
 
       <% liked = Like.find_by( post: post, user: current_user ) != nil %>
       <% btn_color = liked ? "warning" : "default" %>
+      <% action = liked ? :destroy : :create %>
 
-      <%= link_to "ツ", post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs", disabled: !user_signed_in? %>
+      <%= link_to "ツ", post_likes_path( post ), method: :post, class: "btn btn-#{btn_color} btn-xs", disabled: cannot?(action, Like) %>
       <%= post.likes.count %>
 
       &nbsp
