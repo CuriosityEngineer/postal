@@ -22,6 +22,8 @@ class PostsController < ApplicationController
       @user = User.find( params[:user_id] )
 
       @posts = Post.where( user: @user ).order( created_at: :desc )
+
+      @likes = @user.likes.joins( :post ).order( "posts.created_at DESC" )
    end
 
 end
